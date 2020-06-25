@@ -35,14 +35,14 @@ function App() {
             <StyledLink to="/login" onClick={logoutHandler}>
               Logout
             </StyledLink>
-            <StyledLink to="/user">Dashboard</StyledLink>
+            <StyledLink to="/userdashboard">Dashboard</StyledLink>
             <StyledLink to="/register">Register Now</StyledLink>
           </StyledNav>
         ) : (
           <StyledNav>
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="/login">Login</StyledLink>
-            <StyledLink to="/user">Dashboard</StyledLink>
+            <StyledLink to="/userdashboard">Dashboard</StyledLink>
             <StyledLink to="/register">Register Now</StyledLink>
           </StyledNav>
         )}
