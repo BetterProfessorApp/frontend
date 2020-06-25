@@ -91,7 +91,7 @@ const Project = (props) => {
               onChange={editProjectInputChange}
             />
             <button type="submit">Submit</button>
-            <button onClick={cancelEdit}>cancel</button>
+            <button onClick={cancelEdit}>Cancel</button>
           </EditForm>
         </>
       ) : (
@@ -101,15 +101,17 @@ const Project = (props) => {
           <p>Project Type:&nbsp;{project.project_type}</p>
           <p>Due Date(mm/dd/yyyy):&nbsp; {project.due_date}</p>
           <p>Description:&nbsp;{project.desc}</p>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setEditToggle(true);
-            }}
-          >
-            Edit
-          </button>
-          <button onClick={completedHander}>Completed</button>
+          <ButtonContainer>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setEditToggle(true);
+              }}
+            >
+              Edit Project
+            </button>
+            <button onClick={completedHander}>Completed</button>
+          </ButtonContainer>
         </>
       )}
     </ProjectContainer>
@@ -128,19 +130,55 @@ const ProjectContainer = styled.div`
   flex-direction: column;
   box-shadow: 0 0 3px black;
   margin: 2% 0;
+  align-items: center;
 `;
 const EditForm = styled.form`
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 
-  label {
-    margin-top: 1%;
-  }
-  input {
-    margin-bottom: 1%;
-  }
+
+label {
+  margin-top: 5%;
+}
+input {
+  margin-bottom: 5%;
+}
+button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #2196f3;
+   color: white;
+   border-radius: 10px !important;
+   font-size: 0.8rem;
+   border: none;
+   padding: 0.5rem 3rem;
+letter-spacing: 0.2rem;
+&:hover {
+  background-color: lightcyan;
+  color: black;
+  box-shadow: 2px 2px 3px black;
+}
+`;
+const ButtonContainer = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: 10%;
   button {
-    margin-top: 1%;
-    margin-bottom: 1%;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 10px !important;
+    font-size: 1rem;
+    border: none;
+    padding: 0.5rem 3rem;
+    letter-spacing: 0.1rem;
+    &:hover {
+      background-color: lightcyan;
+      color: black;
+      box-shadow: 2px 2px 3px black;
+    }
   }
 `;
