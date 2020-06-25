@@ -31,7 +31,7 @@ const Project = (props) => {
       )
       .then((res) => {
         setEditToggle(false);
-      })
+        setRefresh(!refresh);
       .catch((err) => {
         console.log(err);
       });
