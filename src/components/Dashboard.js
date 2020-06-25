@@ -4,6 +4,7 @@ import StudentsList from "./StudentsList";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Reminder from "./Reminder";
 
 const Dashboard = (props) => {
   const userID = useSelector((state) => state.userReducer.id);
@@ -24,7 +25,8 @@ const Dashboard = (props) => {
   return (
     <DashboardContainer>
       <ReminderDiv className="reminder">
-        This is the reminder section, coming soon!
+        <h2>Projects Due in a Week</h2>
+        <Reminder students={students} />
       </ReminderDiv>
 
       <StudentsListDiv className="students">

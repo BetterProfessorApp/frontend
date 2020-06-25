@@ -87,7 +87,7 @@ const Project = (props) => {
           {" "}
           <p>Project Name:&nbsp;{project.project_name}</p>
           <p>Project Type:&nbsp;{project.project_type}</p>
-          <p>Due Date:&nbsp; {project.due_date}</p>
+          <p>Due Date(month):&nbsp; {project.due_date}</p>
           <p>Description:&nbsp;{project.desc}</p>
           <button
             onClick={(e) => {
