@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Project from "./Project";
+import styled from 'styled-components'
 
 const StudentPage = () => {
   const { id } = useParams();
@@ -93,13 +94,15 @@ const StudentPage = () => {
     setEditToggle(false);
   };
   return (
-    <>
-      <button onClick={addProjectHandler}>Add a Project</button>
-      <button onClick={editStudentHandler}>Edit</button>
-      <button onClick={deleteHandler}>Delete</button>
+    <StudentPageContainer>
+      <ButtonContainer>
+        <button onClick={addProjectHandler}>Add a Project</button>
+        <button onClick={editStudentHandler}>Edit</button>
+        <button onClick={deleteHandler}>Delete</button>
+      </ButtonContainer>
       {editToggle ? (
-        <>
-          <form onSubmit={onEditSubmit}>
+        <div>
+          <EditForm onSubmit={onEditSubmit}>
             <label>Name:</label>
             <input
               type="text"
@@ -123,19 +126,19 @@ const StudentPage = () => {
             />
             <button type="submit">Submit</button>
             <button onClick={cancelEdit}>Cancel</button>
-          </form>
-        </>
+          </EditForm>
+        </div>
       ) : (
-        <>
+        <StudentInfo>
           <p>Name:&nbsp;{student.name}</p>
           <p>Email:&nbsp;{student.email}</p>
           <p>Subject:&nbsp;{student.subject}</p>
-        </>
+        </StudentInfo>
       )}
 
       {projects && (
         <>
-          <div className="projectSection">
+          <SpaceSaver className="projectSection">
             {projects.map((project, index) => {
               return (
                 <Project
@@ -147,11 +150,56 @@ const StudentPage = () => {
                 />
               );
             })}
-          </div>
+          </SpaceSaver>
         </>
       )}
-    </>
+    </StudentPageContainer>
   );
 };
 
 export default StudentPage;
+
+const StudentPageContainer = styled.div`
+  width: 92%;
+  margin: auto;
+  margin-top: 2%;
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const ButtonContainer = styled.div`
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+const EditForm = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-top: 5%;
+  }
+  input {
+    margin-bottom: 5%;
+  }
+  button {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+`
+const StudentInfo = styled.div`
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+const SpaceSaver = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`

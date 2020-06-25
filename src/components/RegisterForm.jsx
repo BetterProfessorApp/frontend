@@ -163,4 +163,9 @@ const StyledSubmit = styled.input`
   border-radius: 10px !important;
   border: none;
   padding: 0.5rem 3rem;
+  &:hover {
+    background-color: lightcyan;
+    color: black;
+    box-shadow: 2px 2px 3px black;
+  }
 `;
