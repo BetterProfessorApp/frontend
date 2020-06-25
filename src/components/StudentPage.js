@@ -33,7 +33,7 @@ const StudentPage = () => {
   }, [refresh, id, userID]);
 
   useEffect(() => {
-    console.log(userID);
+    //console.log(userID);
     axiosWithAuth()
       .get(`/api/users/teacher/${userID}/students/projects`)
       .then((res) => {
@@ -46,6 +46,7 @@ const StudentPage = () => {
         );
       })
       .catch((err) => {
+        setProjects([]);
         console.log(err);
       });
   }, [refresh]);

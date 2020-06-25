@@ -11,17 +11,17 @@ const Reminder = (props) => {
   const tokenObject = jwt_decode(token);
   const userID = tokenObject.teacher_id;
   useEffect(() => {
-    console.log(userID);
+    //console.log(userID);
     axiosWithAuth()
       .get(`/api/users/teacher/${userID}/students/projects`)
       .then((res) => {
-        console.log(res.data);
+        //  console.log(res.data);
 
         const dueProjectCheckList = res.data.filter((project) => {
           return project.teacher_id == userID;
         });
         const dueProject = getProjetDue(dueProjectCheckList);
-        console.log(dueProject);
+        //  console.log(dueProject);
         setProjectsDue(dueProject);
       })
       .catch((err) => {

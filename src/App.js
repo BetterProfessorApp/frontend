@@ -14,7 +14,7 @@ function App() {
   const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    console.log(status);
+    // console.log(status);
     if (localStorage.getItem("token")) {
       setStatus(true);
     }

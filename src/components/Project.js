@@ -29,7 +29,7 @@ const Project = (props) => {
         editProject
       )
       .then((res) => {
-        history.push(`/student/${id}`);
+        setEditToggle(false);
       })
       .catch((err) => {
         console.log(err);
@@ -41,15 +41,18 @@ const Project = (props) => {
 
   const completedHander = (e) => {
     e.preventDefault();
+    console.log(project);
     axiosWithAuth()
       .delete(`/api/users/teacher/${userID}/students/projects/${project.id}`)
       .then((res) => {
         console.log(res);
         setRefresh(!refresh);
-        history.push(`/student/${id}`);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        history.push(`/student/${id}`);
       });
   };
 
@@ -95,7 +98,7 @@ const Project = (props) => {
           {" "}
           <p>Project Name:&nbsp;{project.project_name}</p>
           <p>Project Type:&nbsp;{project.project_type}</p>
-          <p>Due Date(month):&nbsp; {project.due_date}</p>
+          <p>Due Date(mm/dd/yyyy):&nbsp; {project.due_date}</p>
           <p>Description:&nbsp;{project.desc}</p>
           <button
             onClick={(e) => {

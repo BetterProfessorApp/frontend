@@ -10,7 +10,6 @@ import jwt_decode from "jwt-decode";
 const Dashboard = (props) => {
   const token = localStorage.getItem("token");
   const tokenObject = jwt_decode(token);
-  console.log(tokenObject);
   const userID = tokenObject.teacher_id;
   const refresh = useSelector((state) => state.userReducer.refresh);
   const [students, setStudents] = useState([]);
