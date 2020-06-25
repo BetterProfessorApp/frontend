@@ -74,6 +74,14 @@ const AddStudent = () => {
         <StyledSubmit id="addButton" type="submit">
           Submit
         </StyledSubmit>
+        <StyledSubmit
+          onClick={(e) => {
+            e.preventDefault();
+            history.push("/user");
+          }}
+        >
+          Cancel
+        </StyledSubmit>
       </StyledForm>
     </FormContainer>
   );

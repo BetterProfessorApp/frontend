@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useSelector } from "react-redux";
-import styled from 'styled-components'
+import styled from "styled-components";
 import jwt_decode from "jwt-decode";
-
 
 const AddProject = () => {
   const { id } = useParams();
@@ -42,35 +41,51 @@ const AddProject = () => {
     <FormContainer>
       <StyledForm onSubmit={onSubmit}>
         <StyledHeading>Add a Project</StyledHeading>
-        <label>Project Name:{' '}
-        <input
-          type="text"
-          name="project_name"
-          value={project.project_name}
-          onChange={projectInputChange}
-        /></label>
-        <label>Project Type:{' '}
-        <input
-          type="text"
-          name="project_type"
-          value={project.project_type}
-          onChange={projectInputChange}
-        /></label>
-        <label>Due Date:{' '}
-        <input
-          type="text"
-          name="due_date"
-          value={project.due_date}
-          onChange={projectInputChange}
-        /></label>
-        <label>Description:{' '}
-        <input
-          type="text"
-          name="desc"
-          value={project.desc}
-          onChange={projectInputChange}
-        /></label>
+        <label>
+          Project Name:{" "}
+          <input
+            type="text"
+            name="project_name"
+            value={project.project_name}
+            onChange={projectInputChange}
+          />
+        </label>
+        <label>
+          Project Type:{" "}
+          <input
+            type="text"
+            name="project_type"
+            value={project.project_type}
+            onChange={projectInputChange}
+          />
+        </label>
+        <label>
+          Due Date (mm/dd/yyyy):{" "}
+          <input
+            type="text"
+            name="due_date"
+            value={project.due_date}
+            onChange={projectInputChange}
+          />
+        </label>
+        <label>
+          Description:{" "}
+          <input
+            type="text"
+            name="desc"
+            value={project.desc}
+            onChange={projectInputChange}
+          />
+        </label>
         <StyledSubmit type="submit">Submit</StyledSubmit>
+        <StyledSubmit
+          onClick={(e) => {
+            e.preventDefault();
+            history.push(`/student/${id}`);
+          }}
+        >
+          Cancel
+        </StyledSubmit>
       </StyledForm>
     </FormContainer>
   );
@@ -87,7 +102,6 @@ const FormContainer = styled.div`
 `;
 const StyledForm = styled.form`
   width: 70%;
-  /* border: 1px solid black; */
   border-radius: 20px;
   box-shadow: 1px 1px 5px black;
   margin-top: 5%;

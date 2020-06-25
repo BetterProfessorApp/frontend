@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Project = (props) => {
   const { id, userID, project, setRefresh, refresh } = props;
@@ -118,18 +118,17 @@ const Project = (props) => {
 
 export default Project;
 
-
 const ProjectContainer = styled.div`
   box-sizing: border-box;
   width: 60%;
   padding: 2%;
-  background-color: lightblue;
+  background-color: lightgoldenrodyellow;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 3px black;
   margin: 2% 0;
-`
+`;
 const EditForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -144,4 +143,4 @@ const EditForm = styled.form`
     margin-top: 1%;
     margin-bottom: 1%;
   }
-`
+`;

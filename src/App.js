@@ -72,6 +72,7 @@ const StyledNav = styled.nav`
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 0 3px black;
+  font-size: 1.5rem;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;

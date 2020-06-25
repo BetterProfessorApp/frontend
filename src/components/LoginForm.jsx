@@ -145,8 +145,10 @@ const StyledSubmit = styled.input`
   background-color: #2196f3;
   color: white;
   border-radius: 10px !important;
+  font-size: 1rem;
   border: none;
   padding: 0.5rem 3rem;
+  letter-spacing: 0.2rem;
   &:hover {
     background-color: lightcyan;
     color: black;

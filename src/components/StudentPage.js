@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Project from "./Project";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StudentPage = () => {
   const { id } = useParams();
@@ -100,8 +100,8 @@ const StudentPage = () => {
     <StudentPageContainer>
       <ButtonContainer>
         <button onClick={addProjectHandler}>Add a Project</button>
-        <button onClick={editStudentHandler}>Edit</button>
-        <button onClick={deleteHandler}>Delete</button>
+        <button onClick={editStudentHandler}>Edit Student Info</button>
+        <button onClick={deleteHandler}>Delete Student</button>
       </ButtonContainer>
       {editToggle ? (
         <div>
@@ -133,9 +133,18 @@ const StudentPage = () => {
         </div>
       ) : (
         <StudentInfo>
-          <p>Name:&nbsp;{student.name}</p>
-          <p>Email:&nbsp;{student.email}</p>
-          <p>Subject:&nbsp;{student.subject}</p>
+          <p>
+            <label>Name:&nbsp;</label>
+            {student.name}
+          </p>
+          <p>
+            <label>Email:&nbsp;</label>
+            {student.email}
+          </p>
+          <p>
+            <label>Subject:&nbsp;</label>
+            {student.subject}
+          </p>
         </StudentInfo>
       )}
 
@@ -166,23 +175,39 @@ export default StudentPage;
 const StudentPageContainer = styled.div`
   width: 92%;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 4%;
   border-radius: 5px;
   box-shadow: 0 0 3px black;
   padding: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const ButtonContainer = styled.div`
-  width: 30%;
+  width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-`
+  margin-bottom: 4%;
+  button {
+    background-color: #2196f3;
+    color: white;
+    border-radius: 10px !important;
+    font-size: 1rem;
+    border: none;
+    padding: 0.5rem 3rem;
+    letter-spacing: 0.1rem;
+    &:hover {
+      background-color: lightcyan;
+      color: black;
+      box-shadow: 2px 2px 3px black;
+    }
+  }
+`;
 const EditForm = styled.form`
   display: flex;
   flex-direction: column;
+  margin-top:10%;
 
   label {
     margin-top: 5%;
@@ -193,17 +218,38 @@ const EditForm = styled.form`
   button {
     margin-top: 5%;
     margin-bottom: 5%;
+    background-color: #2196f3;
+     color: white;
+     border-radius: 10px !important;
+     font-size: 0.8rem;
+     border: none;
+     padding: 0.5rem 3rem;
+  letter-spacing: 0.2rem;
+  &:hover {
+    background-color: lightcyan;
+    color: black;
+    box-shadow: 2px 2px 3px black;
   }
-`
+`;
 const StudentInfo = styled.div`
   width: 70%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 2px black;
+  color: black;
+  label {
+    color: gray;
+  }
+`;
 const SpaceSaver = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;

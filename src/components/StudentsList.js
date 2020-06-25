@@ -54,6 +54,9 @@ const StudentContainerLink = styled(Link)`
   border-radius: 10px;
   box-shadow: 0 0 2px black;
   color: black;
+  &:hover {
+    background-color: #00ffff;
+  }
 `;
 const LabelSpan = styled.span`
   color: gray;
@@ -61,4 +64,4 @@ const LabelSpan = styled.span`
 const IDKSomeContainer = styled.div`
   margin-top: 1%;
   margin-bottom: 1%;
-`
+`;
