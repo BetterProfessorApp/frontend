@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Project from "./Project";
 import styled from 'styled-components'
@@ -8,7 +8,9 @@ import styled from 'styled-components'
 const StudentPage = () => {
   const { id } = useParams();
   const history = useHistory();
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  const userID = tokenObject.teacher_id;
   const [student, setStudent] = useState([]);
   const [projects, setProjects] = useState([]);
   const [refresh, setRefresh] = useState(true);
@@ -147,6 +149,7 @@ const StudentPage = () => {
                   project={project}
                   setRefresh={setRefresh}
                   refresh={refresh}
+                  key={index}
                 />
               );
             })}

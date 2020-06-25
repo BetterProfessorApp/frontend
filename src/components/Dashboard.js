@@ -5,9 +5,13 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Reminder from "./Reminder";
+import jwt_decode from "jwt-decode";
 
 const Dashboard = (props) => {
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  console.log(tokenObject);
+  const userID = tokenObject.teacher_id;
   const refresh = useSelector((state) => state.userReducer.refresh);
   const [students, setStudents] = useState([]);
   useEffect(() => {

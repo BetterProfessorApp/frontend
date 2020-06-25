@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const Reminder = (props) => {
   const { studnets } = props;
   const [projectsDue, setProjectsDue] = useState([]);
   const [refresh, setRefresh] = useState(true);
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  const userID = tokenObject.teacher_id;
   useEffect(() => {
     console.log(userID);
     axiosWithAuth()
