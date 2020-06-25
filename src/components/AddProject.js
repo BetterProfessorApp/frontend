@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
 
 const AddProject = () => {
   const { id } = useParams();
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  const userID = tokenObject.teacher_id;
   const history = useHistory();
 
   const [project, setProject] = useState({

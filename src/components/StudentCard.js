@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import jwt_decode from "jwt-decode";
 
 const StudentCard = (props) => {
   const id = props.student.id;
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  const userID = tokenObject.teacher_id;
   const [projects, setProjects] = useState([]);
   const [refresh, setRefresh] = useState(true);
   useEffect(() => {

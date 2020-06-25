@@ -6,7 +6,14 @@ const Project = (props) => {
   const { id, userID, project, setRefresh, refresh } = props;
   const history = useHistory();
   //const [refresh, setRefresh] = useState(true);
-  const [editProject, setEditProject] = useState(project);
+  const [editProject, setEditProject] = useState({
+    project_name: project.project_name,
+    due_date: project.due_date,
+    desc: project.desc,
+    project_type: project.project_type,
+    teacher_id: JSON.stringify(userID),
+    student_id: id,
+  });
   const [editToggle, setEditToggle] = useState(false);
 
   const editProjectInputChange = (evt) => {
@@ -15,6 +22,7 @@ const Project = (props) => {
   };
   const onSubmit = (evt) => {
     evt.preventDefault();
+    console.log("edited project", editProject);
     axiosWithAuth()
       .put(
         `/api/users/teacher/${userID}/students/projects/${project.id}`,

@@ -3,9 +3,12 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import jwt_decode from "jwt-decode";
 
 const AddStudent = () => {
-  const userID = useSelector((state) => state.userReducer.id);
+  const token = localStorage.getItem("token");
+  const tokenObject = jwt_decode(token);
+  const userID = tokenObject.teacher_id;
   const history = useHistory();
   const [student, setStudent] = useState({
     name: "",
