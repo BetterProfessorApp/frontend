@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from 'styled-components'
 
 const Project = (props) => {
   const { id, userID, project, setRefresh, refresh } = props;
@@ -57,10 +58,10 @@ const Project = (props) => {
   };
 
   return (
-    <>
+    <ProjectContainer>
       {editToggle ? (
         <>
-          <form onSubmit={onSubmit}>
+          <EditForm onSubmit={onSubmit}>
             <label>Project Name:</label>
             <input
               type="text"
@@ -91,7 +92,7 @@ const Project = (props) => {
             />
             <button type="submit">Submit</button>
             <button onClick={cancelEdit}>cancel</button>
-          </form>
+          </EditForm>
         </>
       ) : (
         <>
@@ -111,8 +112,36 @@ const Project = (props) => {
           <button onClick={completedHander}>Completed</button>
         </>
       )}
-    </>
+    </ProjectContainer>
   );
 };
 
 export default Project;
+
+
+const ProjectContainer = styled.div`
+  box-sizing: border-box;
+  width: 60%;
+  padding: 2%;
+  background-color: lightblue;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 3px black;
+  margin: 2% 0;
+`
+const EditForm = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-top: 1%;
+  }
+  input {
+    margin-bottom: 1%;
+  }
+  button {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+`

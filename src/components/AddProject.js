@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { useSelector } from "react-redux";
+import styled from 'styled-components'
 import jwt_decode from "jwt-decode";
+
 
 const AddProject = () => {
   const { id } = useParams();
@@ -36,41 +39,87 @@ const AddProject = () => {
       });
   };
   return (
-    <>
-      <h2>Add a Project</h2>
-      <form onSubmit={onSubmit}>
-        <label>Project Name:</label>
+    <FormContainer>
+      <StyledForm onSubmit={onSubmit}>
+        <StyledHeading>Add a Project</StyledHeading>
+        <label>Project Name:{' '}
         <input
           type="text"
           name="project_name"
           value={project.project_name}
           onChange={projectInputChange}
-        />
-        <label>Project Type:</label>
+        /></label>
+        <label>Project Type:{' '}
         <input
           type="text"
           name="project_type"
           value={project.project_type}
           onChange={projectInputChange}
-        />
-        <label>Due Date:</label>
+        /></label>
+        <label>Due Date:{' '}
         <input
           type="text"
           name="due_date"
           value={project.due_date}
           onChange={projectInputChange}
-        />
-        <label>Description:</label>
+        /></label>
+        <label>Description:{' '}
         <input
           type="text"
           name="desc"
           value={project.desc}
           onChange={projectInputChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </>
+        /></label>
+        <StyledSubmit type="submit">Submit</StyledSubmit>
+      </StyledForm>
+    </FormContainer>
   );
 };
 
 export default AddProject;
+
+const FormContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto Slab", serif;
+`;
+const StyledForm = styled.form`
+  width: 70%;
+  /* border: 1px solid black; */
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px black;
+  margin-top: 5%;
+  box-sizing: border-box;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  label {
+    color: #0a2738;
+  }
+  input {
+    border: 1px solid #66889c;
+    border-radius: 2px;
+  }
+  * {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+  }
+`;
+const StyledHeading = styled.h2`
+  color: #2196f3;
+`;
+const StyledSubmit = styled.button`
+  background-color: #2196f3;
+  color: white;
+  border-radius: 10px !important;
+  border: none;
+  padding: 0.5rem 3rem;
+  &:hover {
+    background-color: lightcyan;
+    color: black;
+    box-shadow: 2px 2px 3px black;
+  }
+`;
