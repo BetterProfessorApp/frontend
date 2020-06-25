@@ -144,6 +144,7 @@ const StudentPage = () => {
                   project={project}
                   setRefresh={setRefresh}
                   refresh={refresh}
+                  key={index}
                 />
               );
             })}
